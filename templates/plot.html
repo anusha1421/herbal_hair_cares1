@@ -1,0 +1,87 @@
+{% extends 'layout.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plot</title>
+    <style>
+        body {
+           
+            background-image: url({{ url_for('static', filename='images/graph.jpg') }});
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            text-align: center; /* Center align the contents */
+        }
+       
+        img {
+            max-width: 100%; /* Ensure the image doesn't exceed the viewport width */
+            max-height: 80vh; /* Ensure the image doesn't exceed 80% of the viewport height */
+        }
+        .card-body {
+            display: none; /* Initially hide the description */
+            background-color: #323648;
+            color: #fff;
+            padding: 10px;
+            margin-top: 30px; 
+            border-radius: 5px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+        .image-container:hover .card-body {
+            display: block; /* Show the description when the container is hovered */
+        }
+        .image-container:hover img {
+            opacity: 0; /* Make the image transparent when the container is hovered */
+        }
+        .image-container:hover {
+            cursor: default; /* Change cursor to default when hovering over the container */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <br>
+        <h1 style="font-family: bold; color: #323648;">Graph Update for Hair Loss </h1>
+        <p style="color: #323648;">Take your cursor over the image, and the description will be displayed. </p>
+        <br>
+        <!-- Image with description -->
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='images/bar_plot.png') }}" alt="Plot">
+            <br>
+            <div class="card card-body" style="justify-content: center;  background-color: rgba(255, 255, 255, 0.5);">
+                <br>
+                <h1 style="font-size:35px;color:black;font-weight:bold;"> Description</h1>
+                <p style="text-align: left; padding: 10px;font-weight:bold;color:black;">
+                    This graph illustrates the progression of hair loss, allowing us to identify the different stages of hair loss. 
+                    Here's what each stage represents:
+                </p><br>
+                <ul  style="color:black; font-weight:bold; text-align:left; margin-left: 30px;">
+                    <li style="list-style-type:circle;color:black; font-weight:bold;margin-left: 30px;">Stage 0: Normal hair condition.</li>
+                    <br>
+                    <li style="list-style-type:circle;color:black; font-weight:bold;margin-left: 30px;">Stage 1: Minimal hair fall.</li><br>
+                    <li style="list-style-type:circle;color:black; font-weight:bold;margin-left: 30px;">Stages 2 and 3: Noticeable hair loss.</li><br>
+                    <li style="list-style-type:circle;color:black; font-weight:bold;margin-left: 30px;">Stage 4: Complete baldness.</li>
+                </ul><br>
+                <p style="text-align: left; padding: 10px;font-weight:bold;color:black;">
+                    When you upload an image, the graph indicates the corresponding stage of hair loss and shows the dates when you uploaded it.
+                    If you check your hair status weekly or daily, you may observe fluctuations between stages 0 or 1 and others. 
+                    If the line remains on the same stage, it suggests that your hair loss stage is similar to the previous check.
+                    Consider continuing the recommended treatment for an additional 3 months to assess any changes effectively.
+                </p>
+            </div>
+        </div>
+        <br>
+        <br>
+    </div>
+</body>
+</html>
+{% endblock %}

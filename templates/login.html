@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <style>
+    
+    body {
+      background-image: url({{ url_for('static', filename='images/R.jpg') }});
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    
+    .form-container {
+      width: 30%;
+      min-width: 300px;
+      background-color: #333333;
+      padding: 20px;
+      margin: 10px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Added shadow for depth */
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+    }
+
+    .form-container form {
+      margin-bottom: 20px;
+    }
+
+    .form-container form input,
+    .form-container form button {
+      width: calc(100% - 20px); /* Adjust width to account for padding */
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 2px solid #007bff; /* Thicker border */
+      border-radius: 5px;
+      outline: none;
+      box-sizing: border-box; /* Include padding and border in the element's total width and height */
+      transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for shadow */
+    }
+
+    .form-container form input:focus,
+    .form-container form button:focus {
+      box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.8); /* Focus shadow */
+    }
+
+    .form-container form button {
+      border: none;
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .form-container form button:hover,
+    .form-container form input:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.5); /* Hover shadow */
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body style="background-color:#6c757d;">
+  
+  <div class="form-container">
+    <h1>Log In using ID and password</h1>
+    <form action="{{ url_for('logedin')}}" method="post">
+      <input type="text" name="user_id" placeholder="User ID" required="required" />
+      <input type="password" name="password" placeholder="Password" required="required" />
+      <button type="submit">Login</button>
+    </form>
+  </div>
+  <div class="form-container">
+    <h1>Register</h1>
+    <form action="{{ url_for('register')}}" method="post">
+      <input type="text" name="user_id" placeholder="User" required="required" />
+      <input type="password" name="password" placeholder="Password" required="required" />
+      <button type="submit">Register</button>
+    </form>
+  </div>
+  
+</body>
+</html>

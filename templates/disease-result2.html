@@ -1,0 +1,118 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<head>
+    <style>
+        html body {
+            background-color: rgb(206, 206, 228);
+            
+          }
+          
+    </style>
+    <style>
+        body {
+            background-image: url({{ url_for('static', filename='images/hairloss.jpg') }});
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            margin: 0;
+            padding: 0;
+            
+            
+            
+           
+        }
+       .data {
+            border-collapse: collapse;
+            width: 100%;
+        }
+       .data th,.data td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 10px;
+        }
+       .data th {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <style>
+       .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-gap: 8px;
+            justify-items: center;
+        }
+       .image-grid img {
+            max-width: 200%;
+            max-height: 200px;
+            padding: 40px;
+        }
+    </style>
+</head>
+<div class="container py-2 mx-auto my-50 h-10" style="margin: 10rem;">
+    <div class="row">
+        <div class="col-sm py-2 py-md-3">
+            
+            <div class="card card-body" style="justify-content: center;  background-color: rgba(255, 255, 255, 0.5);">
+                <p class="text-center" style="color: black; font-size: 30px;">{{ prediction }}</p>
+            </div>
+            <div class="card card-body" style="justify-content: center;  background-color: rgba(255, 255, 255, 0.5);">
+                <p class="text-center" style="color: black; font-size: 30px;">{{ precaution }}</p>
+            </div>
+            <div class="card card-body" style="justify-content: center;  background-color: rgba(255, 255, 255, 0.5);">
+                <p class="text-center" style="color: black; font-size: 30px;">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailsModal" style="background-color: rgba(255, 255, 255, 0.5); color:black">More Details</button>
+                </p>
+            </div>
+            
+            
+            
+           <div class="card card-body" style="justify-content: center;  background-color: rgba(255, 255, 255, 0.5);">
+                <p class="text-center" style="color: black; font-size: 30px;">
+                    <h1 style="font-size:45px; text-align:center;">Product Prescriptions Shown in the Table Below</h1>
+                    <table style="padding: 30px;margin:30px; width: 70%; border-collapse: collapse;font-size: 30px">
+                        {{ table|safe }}
+                    </table>
+                </p>
+            </div>
+            <div class="card card-body" style="justify-content: center;  background-color: rgba(255, 255, 255, 0.5);">
+                <p class="text-center" style="color: black; font-size: 30px;">
+                    <h1 >Products for the stage of hair fall that you have are: {{ folder_name }}</h1>
+                </p>
+            </div>
+            <div class="card card-body" style="justify-content: center;  background-color: rgba(255, 255, 255, 0.5);">
+                <h1 style="font-size:45px; text-align:center;"> Images</h1>
+                <p class="text-center" style="color: black; font-size: 30px;">
+                    <div class="image-grid">
+                        {% for image in image_files %}
+                            <img src="{{ url_for('static', filename='images/' + folder_name + '/' + image) }}" alt="Image">
+                        {% endfor %}
+                    </div>
+                </p>
+            </div>
+            
+           
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailsModalLabel">Treatment Plan Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="font-size:21px; color:black ; font-family:Times New Roman,sans-serif;">
+                The recommendation to apply this treatment plan for three months before reassessment ensures an adequate trial period for observing any changes in hair growth and minimizing potential side effects. If there's no significant improvement after the initial three months, extending the treatment for an additional three months is advised. During this time, regular monitoring through updated images and graphs helps track progress and determine the next steps in the treatment plan.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
