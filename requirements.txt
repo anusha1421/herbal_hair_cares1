@@ -23,7 +23,7 @@ itsdangerous==2.2.0
 jax==0.4.30
 jaxlib==0.4.30
 Jinja2==3.1.4
-keras==2.13.0  # Updated for compatibility
+keras==3.0.5  # Updated to the latest compatible version
 kiwisolver==1.4.7
 libclang==18.1.1
 Markdown==3.7
@@ -53,10 +53,10 @@ rich==13.9.1
 rsa==4.9
 scipy==1.11.2
 six==1.16.0
-tensorboard==2.13.0  # Updated for compatibility
+tensorboard==2.13.0
 tensorboard-data-server==0.7.2
-tensorflow==2.13.0  # Updated for compatibility with Python 3.11
-tensorflow-estimator==2.13.0  # Updated for compatibility
+tensorflow==2.13.0
+tensorflow-estimator==2.13.0
 tensorflow-io-gcs-filesystem==0.31.0
 termcolor==2.4.0
 typing_extensions==4.12.2
@@ -64,4 +64,5 @@ tzdata==2024.2
 urllib3==2.2.3
 Werkzeug==3.0.4
 wrapt==1.14.1
+
 
